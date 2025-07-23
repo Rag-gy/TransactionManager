@@ -1,0 +1,99 @@
+# Essential application.yaml for Personal Finance Tracker
+spring:
+  application:
+    name: personal-finance-tracker
+
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/springdb}
+    username: ${DB_USERNAME:springuser}
+    password: ${DB_PASSWORD:springpass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: FinanceTrackerCP
+      connection-test-query: SELECT 1
+      leak-detection-threshold: 60000
+
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          time_zone: UTC
+          batch_size: 25
+          fetch_size: 50
+        order_inserts: true
+        order_updates: true
+        generate_statistics: false
+    open-in-view: false
+
+  # JSON Configuration
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+    deserialization:
+      fail-on-unknown-properties: true
+    default-property-inclusion: NON_NULL
+    time-zone: UTC
+
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: ${CONTEXT_PATH:/api}
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+    include-exception: false
+
+# Logging Configuration
+logging:
+  level:
+    org.springframework.security: ${LOG_LEVEL_SECURITY:INFO}
+    org.hibernate.SQL: ${LOG_LEVEL_SQL:INFO}
+    org.hibernate.orm.jdbc.bind: ${LOG_LEVEL_HIBERNATE:INFO}
+    com.yourpackage: ${LOG_LEVEL_APP:INFO}
+    org.springframework.web: ${LOG_LEVEL_WEB:INFO}
+    org.springframework.transaction: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ${LOG_FILE:logs/finance-tracker.log}
+    max-size: 10MB
+    max-history: 30
+
+# Management & Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+      show-components: always
+  info:
+    env:
+      enabled: true
