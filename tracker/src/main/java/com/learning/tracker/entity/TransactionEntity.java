@@ -1,7 +1,7 @@
 package com.learning.tracker.entity;
 
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,7 +29,7 @@ public class TransactionEntity {
     Double amount;
 
     @Column(name="type", nullable = false)
-    TransactionType transactionType;
+    TransactionTypeEnum transactionTypeEnum;
 
     @Column(name = "created_at")
     private Instant createdAt;
@@ -38,7 +38,7 @@ public class TransactionEntity {
     private Instant updatedAt;
 
     @Column(name = "category", nullable = false)
-    private TransactionCategory category;
+    private TransactionCategoryEnum category;
 
     @PrePersist
     protected void onCreate() {

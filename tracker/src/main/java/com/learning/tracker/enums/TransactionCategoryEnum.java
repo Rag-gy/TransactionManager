@@ -1,6 +1,6 @@
 package com.learning.tracker.enums;
 
-public enum TransactionCategory {
+public enum TransactionCategoryEnum {
     FOOD,
     TRANSPORT,
     ENTERTAINMENT,

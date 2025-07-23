@@ -1,14 +1,17 @@
 package com.learning.tracker.entity;
 
+import com.learning.tracker.enums.UserRoleEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer id;
+    public Long id;
 
     @Column(name = "first_name", nullable = false)
     public String firstName;
@@ -18,8 +21,18 @@ public class UserEntity {
 
     @Column(name = "email_address", nullable = false, unique = true)
     @Email
-    public String emailAddress;
+    public String username;
 
     @Column(name = "archived", nullable = false)
     public Boolean archived;
+
+    @Column(name="password", nullable = false)
+    public String password;
+
+    @Column(name = "created_at")
+    public Instant createdAt;
+
+    @Column(name = "role", nullable = false)
+    public UserRoleEnum role;
+
 }

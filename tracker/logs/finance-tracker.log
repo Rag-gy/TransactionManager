@@ -792,9 +792,9 @@ Caused by: java.net.ConnectException: Connection refused
 2025-07-23 12:40:07.970 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-07-23 12:40:07.971 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-07-23 12:40:07.973 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2025-07-23 12:40:08.051 [http-nio-8080-exec-1] ERROR c.l.t.e.GlobalExceptionHandler - Malformed JSON request: JSON parse error: Cannot deserialize value of type `com.learning.tracker.enums.TransactionCategory` from String "ENTERTAINMENTS": not one of the values accepted for Enum class: [OTHER, ENTERTAINMENT, TRANSPORT, TRAVEL, HEALTHCARE, FOOD, SHOPPING, UTILITIES, EDUCATION]
-2025-07-23 12:40:34.294 [http-nio-8080-exec-3] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategory'. Check configuration for 'category'
-jakarta.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategory'. Check configuration for 'category'
+2025-07-23 12:40:08.051 [http-nio-8080-exec-1] ERROR c.l.t.e.GlobalExceptionHandler - Malformed JSON request: JSON parse error: Cannot deserialize value of type `com.learning.tracker.enums.TransactionCategoryEnum` from String "ENTERTAINMENTS": not one of the values accepted for Enum class: [OTHER, ENTERTAINMENT, TRANSPORT, TRAVEL, HEALTHCARE, FOOD, SHOPPING, UTILITIES, EDUCATION]
+2025-07-23 12:40:34.294 [http-nio-8080-exec-3] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategoryEnum'. Check configuration for 'category'
+jakarta.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategoryEnum'. Check configuration for 'category'
 	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getExceptionForNullValidator(ConstraintTree.java:116)
 	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getInitializedConstraintValidator(ConstraintTree.java:162)
 	at org.hibernate.validator.internal.engine.constraintvalidation.SimpleConstraintTree.validateConstraints(SimpleConstraintTree.java:58)
@@ -859,8 +859,8 @@ jakarta.validation.UnexpectedTypeException: HV000030: No validator could be foun
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
-2025-07-23 12:40:57.538 [http-nio-8080-exec-6] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategory'. Check configuration for 'category'
-jakarta.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategory'. Check configuration for 'category'
+2025-07-23 12:40:57.538 [http-nio-8080-exec-6] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategoryEnum'. Check configuration for 'category'
+jakarta.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.learning.tracker.enums.TransactionCategoryEnum'. Check configuration for 'category'
 	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getExceptionForNullValidator(ConstraintTree.java:116)
 	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getInitializedConstraintValidator(ConstraintTree.java:162)
 	at org.hibernate.validator.internal.engine.constraintvalidation.SimpleConstraintTree.validateConstraints(SimpleConstraintTree.java:58)
@@ -1008,8 +1008,8 @@ jakarta.validation.UnexpectedTypeException: HV000030: No validator could be foun
 2025-07-23 12:59:26.496 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 2025-07-23 12:59:26.550 [http-nio-8080-exec-2] INFO  c.l.t.service.TransactionService - Fetching transactions for userId: null with type: null
 2025-07-23 12:59:26.633 [http-nio-8080-exec-2] INFO  c.l.t.service.TransactionService - Found 2 transactions for userId: null with type: null
-2025-07-23 12:59:43.919 [http-nio-8080-exec-3] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategory'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [ENTERTAINM]
-org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategory'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [ENTERTAINM]
+2025-07-23 12:59:43.919 [http-nio-8080-exec-3] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategoryEnum'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [ENTERTAINM]
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategoryEnum'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [ENTERTAINM]
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.convertIfNecessary(AbstractNamedValueMethodArgumentResolver.java:301)
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:136)
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
@@ -1059,7 +1059,7 @@ org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: M
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [ENTERTAINM]
+Caused by: org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [ENTERTAINM]
 	at org.springframework.core.convert.support.ConversionUtils.invokeConverter(ConversionUtils.java:47)
 	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:182)
 	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:131)
@@ -1068,7 +1068,7 @@ Caused by: org.springframework.core.convert.ConversionFailedException: Failed to
 	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:867)
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.convertIfNecessary(AbstractNamedValueMethodArgumentResolver.java:293)
 	... 48 common frames omitted
-Caused by: java.lang.IllegalArgumentException: No enum constant com.learning.tracker.enums.TransactionCategory.ENTERTAINM
+Caused by: java.lang.IllegalArgumentException: No enum constant com.learning.tracker.enums.TransactionCategoryEnum.ENTERTAINM
 	at java.base/java.lang.Enum.valueOf(Enum.java:293)
 	at org.springframework.core.convert.support.StringToEnumConverterFactory$StringToEnum.convert(StringToEnumConverterFactory.java:54)
 	at org.springframework.core.convert.support.StringToEnumConverterFactory$StringToEnum.convert(StringToEnumConverterFactory.java:39)
@@ -1082,8 +1082,8 @@ Caused by: java.lang.IllegalArgumentException: No enum constant com.learning.tra
 2025-07-23 13:05:20.632 [http-nio-8080-exec-7] INFO  c.l.t.service.TransactionService - Found 3 transactions for userId: null with type: null
 2025-07-23 13:05:26.309 [http-nio-8080-exec-8] INFO  c.l.t.service.TransactionService - Fetching transactions for userId: null with type: null
 2025-07-23 13:05:26.324 [http-nio-8080-exec-8] INFO  c.l.t.service.TransactionService - Found 1 transactions for userId: null with type: null
-2025-07-23 13:05:35.934 [http-nio-8080-exec-9] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategory'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [TRAVEl]
-org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategory'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [TRAVEl]
+2025-07-23 13:05:35.934 [http-nio-8080-exec-9] ERROR c.l.t.e.GlobalExceptionHandler - Unexpected error: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategoryEnum'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [TRAVEl]
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategoryEnum'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [TRAVEl]
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.convertIfNecessary(AbstractNamedValueMethodArgumentResolver.java:301)
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:136)
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
@@ -1133,7 +1133,7 @@ org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: M
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [TRAVEl]
+Caused by: org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [TRAVEl]
 	at org.springframework.core.convert.support.ConversionUtils.invokeConverter(ConversionUtils.java:47)
 	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:182)
 	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:131)
@@ -1142,7 +1142,7 @@ Caused by: org.springframework.core.convert.ConversionFailedException: Failed to
 	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:867)
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.convertIfNecessary(AbstractNamedValueMethodArgumentResolver.java:293)
 	... 48 common frames omitted
-Caused by: java.lang.IllegalArgumentException: No enum constant com.learning.tracker.enums.TransactionCategory.TRAVEl
+Caused by: java.lang.IllegalArgumentException: No enum constant com.learning.tracker.enums.TransactionCategoryEnum.TRAVEl
 	at java.base/java.lang.Enum.valueOf(Enum.java:293)
 	at org.springframework.core.convert.support.StringToEnumConverterFactory$StringToEnum.convert(StringToEnumConverterFactory.java:54)
 	at org.springframework.core.convert.support.StringToEnumConverterFactory$StringToEnum.convert(StringToEnumConverterFactory.java:39)
@@ -1192,7 +1192,7 @@ Caused by: java.lang.IllegalArgumentException: No enum constant com.learning.tra
 2025-07-23 14:07:41.743 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-07-23 14:07:41.743 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-07-23 14:07:41.747 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2025-07-23 14:07:41.782 [http-nio-8080-exec-2] ERROR c.l.t.e.GlobalExceptionHandler - Method argument type mismatch: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategory'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategory] for value [TRAVEl]
+2025-07-23 14:07:41.782 [http-nio-8080-exec-2] ERROR c.l.t.e.GlobalExceptionHandler - Method argument type mismatch: Method parameter 'category': Failed to convert value of type 'java.lang.String' to required type 'com.learning.tracker.enums.TransactionCategoryEnum'; Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam com.learning.tracker.enums.TransactionCategoryEnum] for value [TRAVEl]
 2025-07-23 14:07:49.796 [http-nio-8080-exec-3] INFO  c.l.t.service.TransactionService - Fetching transactions for userId: null with type: null
 2025-07-23 14:07:49.898 [http-nio-8080-exec-3] INFO  c.l.t.service.TransactionService - Found 1 transactions for userId: null with type: null
 2025-07-23 14:07:58.041 [http-nio-8080-exec-5] INFO  c.l.t.service.TransactionService - Fetching transactions for userId: null with type: null

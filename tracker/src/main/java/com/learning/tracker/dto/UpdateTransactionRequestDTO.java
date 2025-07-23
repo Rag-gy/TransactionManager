@@ -1,8 +1,8 @@
 package com.learning.tracker.dto;
 
 import com.learning.tracker.entity.TransactionEntity;
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import com.learning.tracker.exception.ValidationException;
 
 import java.time.Instant;
@@ -10,9 +10,9 @@ import java.time.Instant;
 public record UpdateTransactionRequestDTO (
         String name,
         Double amount,
-        TransactionType type,
+        TransactionTypeEnum type,
         Instant date,
-        TransactionCategory category
+        TransactionCategoryEnum category
 ){
 
     public TransactionEntity applyToEntity(TransactionEntity transaction) {
@@ -23,7 +23,7 @@ public record UpdateTransactionRequestDTO (
             transaction.setAmount(this.amount);
         }
         if (this.type != null) {
-            transaction.setTransactionType(this.type);
+            transaction.setTransactionTypeEnum(this.type);
         }
         if (this.date != null) {
             transaction.setCreatedAt(this.date);
