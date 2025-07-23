@@ -1,6 +1,7 @@
 package com.learning.tracker.dto;
 
 import com.learning.tracker.entity.TransactionEntity;
+import com.learning.tracker.enums.TransactionCategory;
 import com.learning.tracker.enums.TransactionType;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -19,6 +20,8 @@ public record CreateTransactionRequestDTO(
         TransactionType type,
         @PastOrPresent(message = "Date should be in the past or present")
         Instant date,
+        @NotNull(message = "Transaction Category should not be null")
+        TransactionCategory category,
         @NotNull(message = "User ID should not be empty") Long userId
 ) {
     public CreateTransactionRequestDTO {
@@ -33,6 +36,7 @@ public record CreateTransactionRequestDTO(
                 .transactionType(transaction.type())
                 .name(transaction.name())
                 .userId(transaction.userId())
+                .category(transaction.category())
                 .build();
     }
 }

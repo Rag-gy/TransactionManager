@@ -4,6 +4,7 @@ import com.learning.tracker.dto.ApiResponseDTO;
 import com.learning.tracker.dto.CreateTransactionRequestDTO;
 import com.learning.tracker.dto.TransactionResponseDTO;
 import com.learning.tracker.dto.UpdateTransactionRequestDTO;
+import com.learning.tracker.enums.TransactionCategory;
 import com.learning.tracker.enums.TransactionType;
 import com.learning.tracker.service.TransactionService;
 import jakarta.validation.Valid;
@@ -35,9 +36,10 @@ public class TransactionController {
     @GetMapping("/")
     public ResponseEntity<ApiResponseDTO<List<TransactionResponseDTO>>> getAllTransactions(
             @RequestParam(required = false) Long userId,
-            @RequestParam(required = false) TransactionType type
+            @RequestParam(required = false) TransactionType type,
+            @RequestParam(required = false)TransactionCategory category
     ) {
-        List<TransactionResponseDTO> transactions = transactionService.getAllTransactions(userId, type);
+        List<TransactionResponseDTO> transactions = transactionService.getAllTransactions(userId, type, category);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(ApiResponseDTO.<List<TransactionResponseDTO>>builder()
                         .message("Transactions fetched successfully")

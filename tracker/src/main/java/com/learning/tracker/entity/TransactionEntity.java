@@ -1,5 +1,6 @@
 package com.learning.tracker.entity;
 
+import com.learning.tracker.enums.TransactionCategory;
 import com.learning.tracker.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,6 +36,9 @@ public class TransactionEntity {
 
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    @Column(name = "category", nullable = false)
+    private TransactionCategory category;
 
     @PrePersist
     protected void onCreate() {

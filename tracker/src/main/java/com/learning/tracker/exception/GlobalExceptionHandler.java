@@ -11,14 +11,40 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.validation.BindException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorResponseDTO> handleMethodArgumentTypeMismatchException(
+            MethodArgumentTypeMismatchException ex,
+            HttpServletRequest request
+    ){
+        log.error("Method argument type mismatch: {}", ex.getMessage());
+        String message = String.format("Invalid %s '%s'", ex.getName(), ex.getValue());
+
+        // Add valid values for enum types
+        if (ex.getRequiredType() != null && ex.getRequiredType().isEnum()) {
+            Object[] validValues = ex.getRequiredType().getEnumConstants();
+            message += ". Valid values: " + Arrays.toString(validValues);
+        }
+        ErrorResponseDTO errorResponse = ErrorResponseDTO.of(
+                "INVALID_ARGUMENT",
+                message,
+                "Please check the request parameters",
+                request.getRequestURI(),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ErrorResponseDTO> handleNoHandlerFoundException(

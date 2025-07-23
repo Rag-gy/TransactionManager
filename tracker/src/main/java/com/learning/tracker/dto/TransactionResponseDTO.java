@@ -1,6 +1,7 @@
 package com.learning.tracker.dto;
 
 import com.learning.tracker.entity.TransactionEntity;
+import com.learning.tracker.enums.TransactionCategory;
 import com.learning.tracker.enums.TransactionType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -16,7 +17,8 @@ public record TransactionResponseDTO(
         @NotNull Instant date,
         @NotNull Instant updatedAt,
         @NotNull Instant createdAt,
-        @NotNull Long userId
+        @NotNull Long userId,
+        @NotNull TransactionCategory category
 ) {
 
     public static TransactionResponseDTO fromEntity(TransactionEntity entity) {
@@ -29,6 +31,7 @@ public record TransactionResponseDTO(
                 .updatedAt(entity.getUpdatedAt())
                 .createdAt(entity.getCreatedAt())
                 .userId(entity.getUserId())
+                .category(entity.getCategory())
                 .build();
     }
 }

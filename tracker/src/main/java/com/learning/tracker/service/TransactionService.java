@@ -4,6 +4,7 @@ import com.learning.tracker.dto.CreateTransactionRequestDTO;
 import com.learning.tracker.dto.TransactionResponseDTO;
 import com.learning.tracker.dto.UpdateTransactionRequestDTO;
 import com.learning.tracker.entity.TransactionEntity;
+import com.learning.tracker.enums.TransactionCategory;
 import com.learning.tracker.enums.TransactionType;
 import com.learning.tracker.exception.ResourceNotFoundException;
 import com.learning.tracker.exception.TransactionException;
@@ -41,11 +42,13 @@ public class TransactionService {
     }
 
     @Transactional
-    public List<TransactionResponseDTO> getAllTransactions(Long userId, TransactionType type) {
+    public List<TransactionResponseDTO> getAllTransactions(
+            Long userId, TransactionType type, TransactionCategory category
+    ) {
         try {
             log.info("Fetching transactions for userId: {} with type: {}", userId, type);
 
-            Specification<TransactionEntity> spec = TransactionSpecification.withFilters(userId, type);
+            Specification<TransactionEntity> spec = TransactionSpecification.withFilters(userId, type, category);
             List<TransactionEntity> transactions = transactionRepository.findAll(spec);
 
             if (transactions.isEmpty()) {

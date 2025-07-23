@@ -1,6 +1,7 @@
 package com.learning.tracker.specification;
 
 import com.learning.tracker.entity.TransactionEntity;
+import com.learning.tracker.enums.TransactionCategory;
 import com.learning.tracker.enums.TransactionType;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
@@ -19,13 +20,25 @@ public class TransactionSpecification {
                 transactionType == null ? null : criteriaBuilder.equal(root.get("transactionType"), transactionType);
     }
 
-    public static Specification<TransactionEntity> withFilters(Long userId, TransactionType transactionType) {
+    public static Specification<TransactionEntity> hasCategory(TransactionCategory category) {
+        return (root, query, criteriaBuilder) ->
+                category == null ? null : criteriaBuilder.equal(root.get("category"), category);
+    }
+
+    public static Specification<TransactionEntity> withFilters(
+            Long userId,
+            TransactionType transactionType,
+            TransactionCategory category
+    ) {
         Specification<TransactionEntity> spec = Specification.allOf();
         if (userId != null) {
             spec = spec.and(hasUserId(userId));
         }
         if (transactionType != null) {
             spec = spec.and(hasTransactionType(transactionType));
+        }
+        if(category != null) {
+            spec = spec.and(hasCategory(category));
         }
         return spec;
     }
