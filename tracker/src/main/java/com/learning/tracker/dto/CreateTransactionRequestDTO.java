@@ -7,6 +7,7 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Builder
 public record CreateTransactionRequestDTO(
@@ -19,7 +20,7 @@ public record CreateTransactionRequestDTO(
         @NotNull(message = "Transaction Type should not be null")
         TransactionTypeEnum type,
         @PastOrPresent(message = "Date should be in the past or present")
-        Instant date,
+        LocalDateTime date,
         @NotNull(message = "Transaction Category should not be null")
         TransactionCategoryEnum category,
         @NotNull(message = "User ID should not be empty") Long userId

@@ -6,12 +6,13 @@ import com.learning.tracker.enums.TransactionTypeEnum;
 import com.learning.tracker.exception.ValidationException;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 public record UpdateTransactionRequestDTO (
         String name,
         Double amount,
         TransactionTypeEnum type,
-        Instant date,
+        LocalDateTime date,
         TransactionCategoryEnum category
 ){
 
@@ -41,7 +42,7 @@ public record UpdateTransactionRequestDTO (
         if (this.amount != null && this.amount < 0) {
             throw new ValidationException("Amount should be positive or zero");
         }
-        if (this.date != null && this.date.isAfter(Instant.now())) {
+        if (this.date != null && this.date.isAfter(LocalDateTime.now())) {
             throw new ValidationException("Date should be in the past or present");
         }
     }

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Builder
 public record TransactionResponseDTO(
@@ -14,9 +15,9 @@ public record TransactionResponseDTO(
         @NotNull String name,
         @NotNull Double amount,
         @NotNull TransactionTypeEnum type,
-        @NotNull Instant date,
-        @NotNull Instant updatedAt,
-        @NotNull Instant createdAt,
+        @NotNull LocalDateTime date,
+        @NotNull LocalDateTime updatedAt,
+        @NotNull LocalDateTime createdAt,
         @NotNull Long userId,
         @NotNull TransactionCategoryEnum category
 ) {
