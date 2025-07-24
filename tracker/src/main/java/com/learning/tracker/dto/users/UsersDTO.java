@@ -1,17 +1,18 @@
-package com.learning.tracker.dto;
+package com.learning.tracker.dto.users;
 
 import com.learning.tracker.enums.UserRoleEnum;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 public record UsersDTO(
         Long id,
-        String username,
-        String email,
+        String emailAddress,
         String firstName,
         String lastName,
         Boolean archived,
         UserRoleEnum role,
-        Instant createdAt
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
 }

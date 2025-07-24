@@ -1,4 +1,4 @@
-package com.learning.tracker.dto;
+package com.learning.tracker.dto.transaction;
 
 import com.learning.tracker.entity.TransactionEntity;
 import com.learning.tracker.enums.TransactionCategoryEnum;
@@ -6,7 +6,6 @@ import com.learning.tracker.enums.TransactionTypeEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Builder

@@ -1,8 +1,8 @@
 package com.learning.tracker.service;
 
-import com.learning.tracker.dto.CreateTransactionRequestDTO;
-import com.learning.tracker.dto.TransactionResponseDTO;
-import com.learning.tracker.dto.UpdateTransactionRequestDTO;
+import com.learning.tracker.dto.transaction.CreateTransactionRequestDTO;
+import com.learning.tracker.dto.transaction.TransactionResponseDTO;
+import com.learning.tracker.dto.transaction.UpdateTransactionRequestDTO;
 import com.learning.tracker.entity.TransactionEntity;
 import com.learning.tracker.enums.TransactionCategoryEnum;
 import com.learning.tracker.enums.TransactionTypeEnum;

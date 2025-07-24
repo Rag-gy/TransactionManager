@@ -1,11 +1,10 @@
-package com.learning.tracker.dto;
+package com.learning.tracker.dto.transaction;
 
 import com.learning.tracker.entity.TransactionEntity;
 import com.learning.tracker.enums.TransactionCategoryEnum;
 import com.learning.tracker.enums.TransactionTypeEnum;
 import com.learning.tracker.exception.ValidationException;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 public record UpdateTransactionRequestDTO (

@@ -3,11 +3,16 @@ package com.learning.tracker.entity;
 import com.learning.tracker.enums.UserRoleEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import lombok.Builder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
 public class UserEntity {
@@ -23,7 +28,7 @@ public class UserEntity {
 
     @Column(name = "email_address", nullable = false, unique = true)
     @Email
-    public String username;
+    public String emailAddress;
 
     @Column(name = "archived", nullable = false)
     public Boolean archived;
@@ -32,7 +37,12 @@ public class UserEntity {
     public String password;
 
     @Column(name = "created_at")
-    public Instant createdAt;
+    @CreatedDate
+    public LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @LastModifiedDate
+    public LocalDateTime updatedAt;
 
     @Column(name = "role", nullable = false)
     public UserRoleEnum role;
