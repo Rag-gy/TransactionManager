@@ -2,10 +2,8 @@ package com.learning.tracker.utils;
 
 import com.learning.tracker.config.properties.JwtProperties;
 import com.learning.tracker.dto.users.UserDTO;
-import com.learning.tracker.enums.UserRoleEnum;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +15,6 @@ import java.util.UUID;
 
 @Component
 @Slf4j
-@RequiredArgsConstructor
 public class JwtTokenProvider {
     private static final String TOKEN_TYPE_CLAIM = "tokenType";
     private static final String ACCESS_TOKEN_TYPE = "access";
