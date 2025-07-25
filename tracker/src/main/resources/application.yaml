@@ -99,3 +99,4 @@ app:
     secret: ${JWT_SECRET:myVerySecretKeyForJWTTokenGenerationThatShouldBeLongEnoughAndSecure2024!@#$%^&*()}
     access-token-validity-in-seconds: ${JWT_ACCESS_TOKEN_VALIDITY:3600}
     refresh-token-validity-in-seconds: ${JWT_REFRESH_TOKEN_VALIDITY:604800}
+    issuer: ${JWT_ISSUER:personal-finance-tracker}
