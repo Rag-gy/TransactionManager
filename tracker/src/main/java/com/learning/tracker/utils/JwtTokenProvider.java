@@ -28,10 +28,12 @@ public class JwtTokenProvider {
     private static final String TOKEN_ID_CLAIM = "jti";
 
     private final JwtProperties jwtProperties;
+    private final SecretKey signingKey;
 
-    private final SecretKey signingKey = Keys.hmacShaKeyFor(jwtProperties.secret().getBytes());
-    private final long accessTokenValidityInSeconds = jwtProperties.accessTokenValidityInSeconds();
-    private final long refreshTokenValidityInSeconds = jwtProperties.refreshTokenValidityInSeconds();
+    public JwtTokenProvider(JwtProperties jwtProperties) {
+        this.jwtProperties = jwtProperties;
+        this.signingKey = Keys.hmacShaKeyFor(jwtProperties.secret().getBytes());
+    }
 
     public String generateAccessToken(UserDTO user) {
         Instant now = Instant.now();
