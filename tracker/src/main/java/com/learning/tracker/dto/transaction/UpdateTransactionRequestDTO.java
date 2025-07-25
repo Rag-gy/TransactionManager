@@ -1,18 +1,18 @@
-package com.learning.tracker.dto;
+package com.learning.tracker.dto.transaction;
 
 import com.learning.tracker.entity.TransactionEntity;
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import com.learning.tracker.exception.ValidationException;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 public record UpdateTransactionRequestDTO (
         String name,
         Double amount,
-        TransactionType type,
-        Instant date,
-        TransactionCategory category
+        TransactionTypeEnum type,
+        LocalDateTime date,
+        TransactionCategoryEnum category
 ){
 
     public TransactionEntity applyToEntity(TransactionEntity transaction) {
@@ -23,7 +23,7 @@ public record UpdateTransactionRequestDTO (
             transaction.setAmount(this.amount);
         }
         if (this.type != null) {
-            transaction.setTransactionType(this.type);
+            transaction.setTransactionTypeEnum(this.type);
         }
         if (this.date != null) {
             transaction.setCreatedAt(this.date);
@@ -41,7 +41,7 @@ public record UpdateTransactionRequestDTO (
         if (this.amount != null && this.amount < 0) {
             throw new ValidationException("Amount should be positive or zero");
         }
-        if (this.date != null && this.date.isAfter(Instant.now())) {
+        if (this.date != null && this.date.isAfter(LocalDateTime.now())) {
             throw new ValidationException("Date should be in the past or present");
         }
     }

@@ -78,10 +78,6 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
-  file:
-    name: ${LOG_FILE:logs/finance-tracker.log}
-    max-size: 10MB
-    max-history: 30
 
 # Management & Actuator
 management:
@@ -97,3 +93,9 @@ management:
   info:
     env:
       enabled: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:myVerySecretKeyForJWTTokenGenerationThatShouldBeLongEnoughAndSecure2024!@#$%^&*()}
+    access-token-validity-in-seconds: ${JWT_ACCESS_TOKEN_VALIDITY:3600}
+    refresh-token-validity-in-seconds: ${JWT_REFRESH_TOKEN_VALIDITY:604800}

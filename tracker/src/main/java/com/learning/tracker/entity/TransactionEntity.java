@@ -1,17 +1,22 @@
 package com.learning.tracker.entity;
 
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "transactions")
 public class TransactionEntity {
 
@@ -29,25 +34,17 @@ public class TransactionEntity {
     Double amount;
 
     @Column(name="type", nullable = false)
-    TransactionType transactionType;
+    TransactionTypeEnum transactionTypeEnum;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    @CreatedDate
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
     @Column(name = "category", nullable = false)
-    private TransactionCategory category;
+    private TransactionCategoryEnum category;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-        updatedAt = Instant.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = Instant.now();
-    }
 }

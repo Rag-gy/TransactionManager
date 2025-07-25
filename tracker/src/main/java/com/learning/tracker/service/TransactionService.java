@@ -1,11 +1,11 @@
 package com.learning.tracker.service;
 
-import com.learning.tracker.dto.CreateTransactionRequestDTO;
-import com.learning.tracker.dto.TransactionResponseDTO;
-import com.learning.tracker.dto.UpdateTransactionRequestDTO;
+import com.learning.tracker.dto.transaction.CreateTransactionRequestDTO;
+import com.learning.tracker.dto.transaction.TransactionResponseDTO;
+import com.learning.tracker.dto.transaction.UpdateTransactionRequestDTO;
 import com.learning.tracker.entity.TransactionEntity;
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import com.learning.tracker.exception.ResourceNotFoundException;
 import com.learning.tracker.exception.TransactionException;
 import com.learning.tracker.exception.ValidationException;
@@ -43,7 +43,7 @@ public class TransactionService {
 
     @Transactional
     public List<TransactionResponseDTO> getAllTransactions(
-            Long userId, TransactionType type, TransactionCategory category
+            Long userId, TransactionTypeEnum type, TransactionCategoryEnum category
     ) {
         try {
             log.info("Fetching transactions for userId: {} with type: {}", userId, type);

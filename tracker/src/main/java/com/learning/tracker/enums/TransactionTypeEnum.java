@@ -1,6 +1,6 @@
 package com.learning.tracker.enums;
 
-public enum TransactionType {
+public enum TransactionTypeEnum {
     Income,
     Outcome
 }

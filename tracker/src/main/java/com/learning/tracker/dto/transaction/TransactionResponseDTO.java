@@ -1,24 +1,24 @@
-package com.learning.tracker.dto;
+package com.learning.tracker.dto.transaction;
 
 import com.learning.tracker.entity.TransactionEntity;
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Builder
 public record TransactionResponseDTO(
         @NotNull Long id,
         @NotNull String name,
         @NotNull Double amount,
-        @NotNull TransactionType type,
-        @NotNull Instant date,
-        @NotNull Instant updatedAt,
-        @NotNull Instant createdAt,
+        @NotNull TransactionTypeEnum type,
+        @NotNull LocalDateTime date,
+        @NotNull LocalDateTime updatedAt,
+        @NotNull LocalDateTime createdAt,
         @NotNull Long userId,
-        @NotNull TransactionCategory category
+        @NotNull TransactionCategoryEnum category
 ) {
 
     public static TransactionResponseDTO fromEntity(TransactionEntity entity) {
@@ -26,7 +26,7 @@ public record TransactionResponseDTO(
                 .id(entity.getId())
                 .name(entity.getName())
                 .amount(entity.getAmount())
-                .type(entity.getTransactionType())
+                .type(entity.getTransactionTypeEnum())
                 .date(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())
                 .createdAt(entity.getCreatedAt())

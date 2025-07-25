@@ -1,12 +1,12 @@
-package com.learning.tracker.dto;
+package com.learning.tracker.dto.transaction;
 
 import com.learning.tracker.entity.TransactionEntity;
-import com.learning.tracker.enums.TransactionCategory;
-import com.learning.tracker.enums.TransactionType;
+import com.learning.tracker.enums.TransactionCategoryEnum;
+import com.learning.tracker.enums.TransactionTypeEnum;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Builder
 public record CreateTransactionRequestDTO(
@@ -17,11 +17,11 @@ public record CreateTransactionRequestDTO(
         @PositiveOrZero(message = "Amount should be positive")
         Double amount,
         @NotNull(message = "Transaction Type should not be null")
-        TransactionType type,
+        TransactionTypeEnum type,
         @PastOrPresent(message = "Date should be in the past or present")
-        Instant date,
+        LocalDateTime date,
         @NotNull(message = "Transaction Category should not be null")
-        TransactionCategory category,
+        TransactionCategoryEnum category,
         @NotNull(message = "User ID should not be empty") Long userId
 ) {
     public CreateTransactionRequestDTO {
@@ -33,7 +33,7 @@ public record CreateTransactionRequestDTO(
     public static TransactionEntity toEntity(CreateTransactionRequestDTO transaction) {
         return TransactionEntity.builder()
                 .amount(transaction.amount())
-                .transactionType(transaction.type())
+                .transactionTypeEnum(transaction.type())
                 .name(transaction.name())
                 .userId(transaction.userId())
                 .category(transaction.category())
