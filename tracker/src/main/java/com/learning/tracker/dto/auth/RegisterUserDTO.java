@@ -9,11 +9,11 @@ public record RegisterUserDTO(
         String emailAddress,
         @NotNull(message = "First name is required")
         @NotBlank(message = "First name should not be blank")
-        @Size(max = 50, message = "First name must not exceed 50 characters")
+        @Size(min=2, max = 50, message = "First name should be between 2 and 50 characters")
         String firstName,
         @NotNull(message = "Last name is required")
         @NotBlank(message = "Last name should not be blank")
-        @Size(max = 50, message = "Last name must not exceed 50 characters")
+        @Size(min=2, max = 50, message = "Last name should be between 2 and 50 characters")
         String lastName,
         @NotNull(message = "User role is required")
         UserRoleEnum role,

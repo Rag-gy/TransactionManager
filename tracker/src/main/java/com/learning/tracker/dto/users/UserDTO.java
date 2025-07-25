@@ -2,10 +2,9 @@ package com.learning.tracker.dto.users;
 
 import com.learning.tracker.enums.UserRoleEnum;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
-public record UsersDTO(
+public record UserDTO(
         Long id,
         String emailAddress,
         String firstName,
