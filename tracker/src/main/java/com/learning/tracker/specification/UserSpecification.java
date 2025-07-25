@@ -4,8 +4,6 @@ import com.learning.tracker.entity.UserEntity;
 import com.learning.tracker.enums.UserRoleEnum;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.util.List;
-
 public class UserSpecification {
 
     public static Specification<UserEntity> hasRole(UserRoleEnum role) {
@@ -18,9 +16,9 @@ public class UserSpecification {
                 archived == null ? null : criteriaBuilder.equal(root.get("archived"), archived);
     }
 
-    public static Specification<UserEntity> hasUsername(String username) {
+    public static Specification<UserEntity> hasEmailAddress(String emailAddress) {
         return (root, query, criteriaBuilder) ->
-                username == null ? null : criteriaBuilder.equal(root.get("username"), username);
+                emailAddress == null ? null : criteriaBuilder.equal(root.get("emailAddress"), emailAddress);
     }
 
     public static Specification<UserEntity> hasSearchTerm(String searchTerm) {
@@ -40,7 +38,7 @@ public class UserSpecification {
     public static Specification<UserEntity> withFilters(
             UserRoleEnum role,
             Boolean archived,
-            String username,
+            String emailAddress,
             String searchTerm
     ) {
         Specification<UserEntity> spec = Specification.allOf();
@@ -50,8 +48,8 @@ public class UserSpecification {
         if(archived != null) {
             spec = spec.and(hasArchived(archived));
         }
-        if(username != null) {
-            spec = spec.and(hasUsername(username));
+        if(emailAddress != null) {
+            spec = spec.and(hasEmailAddress(emailAddress));
         }
         if (searchTerm != null && !searchTerm.isEmpty()) {
             spec = spec.and(hasSearchTerm(searchTerm));

@@ -10,6 +10,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
     List<UserEntity> findByRole(UserRoleEnum role);
     List<UserEntity> findByArchived(Boolean archived);
-    Boolean existsByUsername(String username);
     UserEntity findByEmailAddress(String emailAddress);
 }
