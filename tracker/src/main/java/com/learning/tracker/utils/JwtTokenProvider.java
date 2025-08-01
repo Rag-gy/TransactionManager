@@ -142,4 +142,10 @@ public class JwtTokenProvider {
         }
     }
 
+    public boolean isTokenExpired(String token) {
+        return extractAllUserData(token)
+                .map(TokenClaimDTO::isExpired)
+                .orElse(true);
+    }
+
 }
