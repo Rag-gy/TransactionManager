@@ -1,4 +1,4 @@
-package com.learning.tracker.dto.auth;
+package com.learning.tracker.dto.users;
 
 import com.learning.tracker.enums.UserRoleEnum;
 import jakarta.validation.constraints.*;

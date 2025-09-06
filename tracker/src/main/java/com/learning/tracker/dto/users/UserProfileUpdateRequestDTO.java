@@ -8,6 +8,7 @@ public record UserProfileUpdateRequestDTO(
     String firstName,
     @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters long")
     String lastName,
-    UserRoleEnum role
+    UserRoleEnum role,
+    boolean archived
 ) {
 }
